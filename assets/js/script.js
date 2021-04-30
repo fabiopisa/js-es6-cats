@@ -45,8 +45,8 @@ $(document).ready(function(){
 
   //Milestone 1
   arrCats.forEach((cat) => {
-     $('#mailes-1 ul').append(listGenerator(cat.color, cat.name))
-  })
+     $('#mailes-1 ul').append(listGenerator(cat.color, cat.name));
+  });
   //end Milestone 1
 
   //Milestone 2
@@ -61,7 +61,7 @@ $(document).ready(function(){
         color,
         opacity
       }
-    }
+    };
   })//end map
   
 
@@ -69,13 +69,21 @@ $(document).ready(function(){
   const maleCats = arrNewCats.filter((cat) => cat.gender === 'male');
 
   femaleCats.forEach((cat) => {
-    $('#mailes-2-female ul').append(listGenerator(cat.color, cat.name, cat.ribbon.color,cat.ribbon.opacity))
-  })
+    $('#mailes-2-female ul').append(listGenerator(cat.color, cat.name, cat.ribbon.color,cat.ribbon.opacity));
+  });
   maleCats.forEach((cat) => {
-    $('#mailes-2-male ul').append(listGenerator(cat.color, cat.name, cat.ribbon.color,cat.ribbon.opacity))
-  })
-
+    $('#mailes-2-male ul').append(listGenerator(cat.color, cat.name, cat.ribbon.color,cat.ribbon.opacity));
+  });
   //end Milestone 2
+
+  //Milestone 3
+  const catsOrder = [...femaleCats,...maleCats];
+  const targetCats = catsOrder.map((cat) =>{
+    const {name, color, ribbon} = cat
+    $('#mailes-3 ul').append(listGenerator(color,name,ribbon.color,ribbon.opacity));
+    return {name, color, ribbon};
+  })
+  //end Milestone 3
 
 });
 
